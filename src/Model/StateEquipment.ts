@@ -1,0 +1,1 @@
+export type StateEquipment = "new"|"used"
