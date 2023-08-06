@@ -3,6 +3,7 @@ package spring.callboard.controller;
 import java.util.List;
 
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ import spring.callboard.service.Board;
 @Slf4j
 @RequiredArgsConstructor
 @Validated
+@CrossOrigin
 public class CallBoardController {
 	private static final String FILE_NAME = "./db/adv.data";
 	final Board service;
@@ -58,7 +60,7 @@ public class CallBoardController {
 	
 	@GetMapping("price")
 	List<CallBoardDataObject> getByPrice(
-			@RequestParam(name = "price", defaultValue = "") @NotEmpty Float price,
+			@RequestParam(name = "price") Float price,
 			@RequestParam(name = "before", defaultValue = "true") boolean before){
 		
 		return service.getByPrice(price, before);
